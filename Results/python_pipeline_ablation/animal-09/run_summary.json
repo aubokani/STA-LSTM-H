@@ -1,0 +1,12 @@
+{
+  "animal_id": "09",
+  "n_windows": 86400,
+  "load_time_s": 0.14,
+  "total_time_s": 5359.81,
+  "folds": 5,
+  "epochs": 40,
+  "best_model": "GRU + bp",
+  "best_accuracy": 0.9918726483357453,
+  "best_f1": 0.9909604382997937,
+  "best_rmse": 14422.976171875
+}

@@ -1,0 +1,12 @@
+{
+  "animal_id": "17",
+  "n_windows": 86400,
+  "load_time_s": 3.24,
+  "total_time_s": 2787.24,
+  "folds": 5,
+  "epochs": 10,
+  "best_model": "STA-LSTM",
+  "best_accuracy": 0.9917337192474674,
+  "best_f1": 0.9877321990604255,
+  "best_rmse": 18524.081640625
+}

@@ -1,0 +1,98 @@
+# ── Local data (never commit raw sensor data) ─────────────────────────────────
+# Dataset is published on Zenodo (DOI 10.5281/zenodo.4064802) — see README.
+# We do NOT mirror it here.
+data/
+data_raw/
+
+# ── Manuscript (private — paper text + figures + bundled prior-paper PDF) ────
+# This repo is for the reproducible pipeline only; the paper itself stays
+# local. The autonomous loop edits manuscript/ on disk during DRAFTING /
+# REVIEWING phases but never stages or commits anything under this path.
+manuscript/
+
+# ── Internal project-management & authoring artefacts (kept on disk, never ───
+#    published — these are working notes, not part of the reproducible release).
+PROJECT_PROGRESS.md
+CLAUDE.md
+.cursorrules
+docs/agent_briefs/
+scripts/auto_loop/
+scripts/compile_both.sh
+scripts/compile_manuscript.sh
+logs/
+.github/
+.githooks/
+texput.log
+_shell_test.txt
+*.bundle
+
+# ── OneDrive / Dropbox sync files ─────────────────────────────────────────────
+*.conflicted*
+.dropbox
+.dropbox.cache/
+Icon
+
+# ── Experiment results (large arrays and cached features) ────────────────────
+Results/python_pipeline/feature_cache/
+Results/python_pipeline/last_fold_predictions.npy
+# Raw per-animal outputs for the auxiliary experiments (~1.2 GB of .npy +
+# per-split CSVs). Only the consolidated Results/aggregate_*.csv summaries are
+# tracked — same convention as Results/python_pipeline/ above.
+Results/python_pipeline_loao/
+Results/python_pipeline_loao_ablation/
+Results/python_pipeline_loao_backup_*/
+Results/python_pipeline_seedaudit/
+Results/python_pipeline_trivial/
+
+# ── Python artefacts ──────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.env
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Run logs (Slurm output + autonomous loop ticks) ──────────────────────────
+logs/ablation-*.out
+logs/ablation-*.err
+logs/ablation_loop.log
+logs/auto_loop/tick.log
+logs/auto_loop/last_compile.log
+logs/auto_loop/cron.log
+
+# ── LaTeX build artefacts (redundant with manuscript/ rule above, kept for
+#    safety in case manuscript/ rule is ever relaxed) ─────────────────────────
+manuscript/**/*.aux
+manuscript/**/*.log
+manuscript/**/*.out
+manuscript/**/*.synctex.gz
+manuscript/**/*.bbl
+manuscript/**/*.blg
+manuscript/**/*.fls
+manuscript/**/*.fdb_latexmk
+manuscript/**/*-eps-converted-to.pdf
+docs/github_support_*.md

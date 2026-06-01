@@ -1,0 +1,7 @@
+comparison,acc_stat,acc_p_value,acc_significant,f1_stat,f1_p_value,f1_significant,rmse_stat,rmse_p_value,rmse_significant,lstmh_mean_acc,lstmh_mean_f1,lstmh_mean_rmse,sta_lstm_mean_acc,sta_lstm_mean_f1,sta_lstm_mean_rmse,lstm_mean_acc,lstm_mean_f1,lstm_mean_rmse,gru_mean_acc,gru_mean_f1,gru_mean_rmse,transformer_mean_acc,transformer_mean_f1,transformer_mean_rmse,kf_mean_acc,kf_mean_f1,kf_mean_rmse,ekf_hmm_mean_acc,ekf_hmm_mean_f1,ekf_hmm_mean_rmse
+STA-LSTM-H vs STA-LSTM,5.0,0.78125,False,4.0,0.84375,False,5.0,0.3125,False,0.9936671490593343,0.9916412855041148,15156.034765625,0.9939218523878438,0.9919412916206308,15291.672265625,,,,,,,,,,,,,,,
+STA-LSTM-H vs LSTM,15.0,0.03125,True,15.0,0.03125,True,14.0,0.96875,False,0.9936671490593343,0.9916412855041148,15156.034765625,,,,0.9033632416787265,0.8842697024497272,14486.06953125,,,,,,,,,,,,
+STA-LSTM-H vs GRU,15.0,0.03125,True,15.0,0.03125,True,15.0,1.0,False,0.9936671490593343,0.9916412855041148,15156.034765625,,,,,,,0.90572503617945,0.8882818358726835,14553.76328125,,,,,,,,,
+STA-LSTM-H vs Transformer,15.0,0.03125,True,15.0,0.03125,True,0.0,0.03125,True,0.9936671490593343,0.9916412855041148,15156.034765625,,,,,,,,,,0.8605846599131695,0.8306461767930917,16799.03359375,,,,,,
+STA-LSTM-H vs KF,,,False,,,False,15.0,1.0,False,0.9936671490593343,0.9916412855041148,15156.034765625,,,,,,,,,,,,,,,2838.878381712705,,,
+STA-LSTM-H vs EKF-HMM,,,False,,,False,15.0,1.0,False,0.9936671490593343,0.9916412855041148,15156.034765625,,,,,,,,,,,,,,,,,,3209.7312572885603
