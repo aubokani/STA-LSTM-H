@@ -3,7 +3,7 @@
 Reads the consolidated results from `Results/python_pipeline/` (per-animal
 `comparison_report.csv`, `wilcoxon_stats.csv`, `autoregressive_errors.csv`,
 `last_fold_predictions.npy`) and renders EPS+PNG figures into
-`manuscript/figures-new/`.
+`Results/figures/` (the canonical figure location).
 
 Figures produced (matching the prior MDPI Drones paper's lineup):
   * cattle_movements.eps     — example trajectory of one animal
@@ -20,7 +20,7 @@ Figures produced (matching the prior MDPI Drones paper's lineup):
 Usage:
     python scripts/make_figures.py \
         --results-dir Results/python_pipeline \
-        --out-dir     manuscript/figures-new
+        --out-dir     Results/figures
 """
 
 from __future__ import annotations
@@ -692,7 +692,7 @@ def collect(results_dir: Path) -> tuple[pd.DataFrame, list[pd.DataFrame], dict]:
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--results-dir", type=Path, default=Path("Results/python_pipeline"))
-    p.add_argument("--out-dir",     type=Path, default=Path("manuscript/figures-new"))
+    p.add_argument("--out-dir",     type=Path, default=Path("Results/figures"))
     p.add_argument("--animal-focus", type=str, default=None,
                    help="Animal id (e.g. '04') for trajectory plots")
     args = p.parse_args()

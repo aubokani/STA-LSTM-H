@@ -96,3 +96,4 @@ manuscript/**/*.fls
 manuscript/**/*.fdb_latexmk
 manuscript/**/*-eps-converted-to.pdf
 docs/github_support_*.md
+scripts/post_process.sh

@@ -233,17 +233,54 @@ Everything runs without a cluster — keep these points in mind:
 ## Repository layout
 
 ```
-src/
-  data_loader.py   # 10 Hz streaming, 1-s windowing, pseudo-position, sequence builders
-  model.py         # model registry, neural backbones, behaviour-adaptive Kalman, classical filters
-  trainer.py       # 5-fold CV, multi-task loss, autoregressive eval, Wilcoxon, ranking
-  run_animal.py    # per-animal CLI entry point (within-animal + --ablation)
-scripts/           # LOAO / trivial / seed-audit / block-CV runners, consolidation, figures, Slurm
-config/hpc.cfg     # cluster paths, partitions, Python module
-docs/hpc/          # Ada Lovelace operational reference
-Results/           # committed aggregate CSVs, per-animal reports, prediction arrays, figures
-data/raw/          # YOU put the Zenodo CSVs here (git-ignored, not shipped)
-requirements.txt
+STA-LSTM-H/
+├── README.md                       # this file
+├── LICENSE                         # MIT
+├── requirements.txt                # Python dependencies
+├── .gitignore
+│
+├── src/                            # core library (one-way chain: data_loader → model → trainer)
+│   ├── data_loader.py              # 10 Hz streaming, 1-s windowing, pseudo-position, sequence builders
+│   ├── model.py                    # model registry, neural backbones, behaviour-adaptive Kalman, classical filters
+│   ├── trainer.py                  # 5-fold CV, multi-task loss, autoregressive eval, Wilcoxon, ranking
+│   └── run_animal.py               # per-animal CLI entry point (within-animal CV; --ablation factorial)
+│
+├── scripts/
+│   ├── run_loao_animal.py          # leave-one-animal-out (cross-animal) runner
+│   ├── run_trivial_baselines.py    # "repeat previous second's label" baseline
+│   ├── predict_prev_baseline.py    # cohort-level previous-label baseline
+│   ├── run_seed_audit.py           # multi-seed stability audit
+│   ├── run_block_cv_animal.py      # blocked (contiguous) cross-validation variant
+│   ├── consolidate_results.py      # → Results/comparison_report_all_animals.csv
+│   ├── consolidate_loao.py         # → Results/comparison_report_loao.csv
+│   ├── consolidate_loao_ablation.py
+│   ├── consolidate_seed_audit.py
+│   ├── aggregate_18animals.py      # cohort-level aggregate summaries
+│   ├── ablation_compare.py         # input-set × architecture comparison
+│   ├── class_prevalence_audit.py   # behaviour-class balance per animal
+│   ├── wilcoxon_effects.py         # significance tests + effect sizes
+│   ├── mcu_latency_estimate.py     # on-device latency estimate
+│   ├── make_figures.py             # all paper figures → Results/figures/
+│   ├── fetch_results.sh            # rsync per-animal outputs back from the cluster
+│   ├── setup_env.sh                # build .venv + install deps on the cluster
+│   └── submit_*.sh                 # Slurm submission scripts (see "Running on HPC")
+│
+├── config/
+│   └── hpc.cfg                     # cluster paths, Slurm partitions, Python module
+│
+├── docs/
+│   └── hpc/ada_reference.md        # Ada Lovelace cluster operational reference
+│
+├── Results/                        # committed outputs that back the paper
+│   ├── *.csv                       # aggregate summaries, comparison reports, Wilcoxon stats
+│   ├── figures/                    # all paper figures (.png + .eps pairs)
+│   ├── python_pipeline/            # within-animal: animal-NN/{comparison_report.csv,
+│   │                               #   wilcoxon_stats.csv, run_summary.json, last_fold_predictions.npy}
+│   └── python_pipeline_ablation/   # same layout, factorial-ablation runs
+│
+└── data/raw/                       # YOU place the Zenodo CSVs here — git-ignored, not shipped
+    ├── accel-01.csv … accel-18.csv
+    └── halter-01.csv … halter-18.csv
 ```
 
 ---
